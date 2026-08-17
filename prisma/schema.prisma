@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id          String   @id @default(uuid())
+  name        String
+  role        String
+  summaryEn   String   @db.Text
+  summaryId   String   @db.Text
+  email       String
+  github      String?
+  linkedin    String?
+  instagram   String?
+  photoUrl    String?
+  cvEnUrl     String?
+  cvIdUrl     String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id        String   @id @default(uuid())
+  name      String
+  imageUrl  String
+  sortOrder Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([sortOrder])
+  @@index([isActive])
+}
