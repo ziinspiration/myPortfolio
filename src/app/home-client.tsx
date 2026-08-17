@@ -103,7 +103,7 @@ Best regards,`,
 
     let cancelled = false;
 
-    const SPEED = 0.25;
+    const SPEED = 0.38;
 
     const calculateCycleWidth = () => {
       if (!track) {
